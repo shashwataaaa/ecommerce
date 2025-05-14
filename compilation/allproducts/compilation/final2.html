@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Light Luxuries Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f0e5;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .wrapper-viewall {
+            width: 100%;
+            padding: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .collection_main {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .collection_main img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+            max-height: 400px;
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 20px;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-sidebar {
+            width: 100%;
+            max-width: 240px;
+            background-color: #f2e6d6;
+            padding: 20px;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .filter-box {
+            width: 100%;
+        }
+
+        .filter-box h3 {
+            font-size: 14px;
+            color: #8c4b1f;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .accordion-section {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        .accordion-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: #8c4b1f;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin: 12px 0;
+        }
+
+        .accordion-toggle::before {
+            content: '▾';
+            display: inline-block;
+            margin-right: 8px;
+            transition: transform 0.3s;
+        }
+
+        input[type="checkbox"].toggle {
+            display: none;
+        }
+
+        input[type="checkbox"].toggle:checked + label::before {
+            transform: rotate(-180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        input[type="checkbox"].toggle:checked ~ .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-content label {
+            font-size: 14px;
+            color: #2d2d2d;
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+        }
+
+        .accordion-content input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .accordion-content span {
+            font-size: 13px;
+            color: #777;
+            margin-left: 4px;
+        }
+
+        .search-area {
+            width: 100%;
+        }
+
+        input.gf-controls-search-input {
+            width: 100%;
+            margin-top: 30px;
+            padding: 10px 30px 10px 40px;
+            border: 1px solid #e8e8e8;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-search'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+
+        .featured-products {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .product-item {
+            width: 100%;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            text-align: center; /* Center aligns the elements within the product item */
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+            max-height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-item h3 {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #7e1414;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #b84e4e;
+            margin-top: 5px;
+        }
+
+        .cart3 {
+            margin-top: 10px;
+            background: #222;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+
+        @media (min-width: 768px) {
+            .wrapper-viewall {
+                align-items: flex-start;
+            }
+
+            .content-area {
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .filter-sidebar {
+                width: 240px;
+            }
+
+            .search-area {
+                width: calc(100% - 260px);
+            }
+
+            .featured-products {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .product-item {
+                width: 48%;
+                margin-bottom: 20px;
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            input.gf-controls-search-input {
+                width: 50%;
+                margin-top: 0;
+                margin-left: 450px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .product-item {
+                width: 32%;
+            }
+        }
+
+        .wrapper-viewall {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .content-area {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper-viewall">
+        <div class="collection_main">
+            <img src="img/Desktop_2.webp" alt="Light Luxuries" />
+        </div>
+        <div class="content-area">
+            <div class="filter-sidebar">
+                <div class="filter-box">
+                    <h3>Filter By</h3>
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-category" class="toggle">
+                        <label for="toggle-category" class="accordion-toggle">Category</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Kaftan Set <span>(18)</span></label>
+                            <label><input type="checkbox"> Kalidar Set <span>(18)</span></label>
+                            <label><input type="checkbox"> Kurta Set <span>(61)</span></label>
+                            <label><input type="checkbox"> Lehenga Set <span>(1)</span></label>
+                            <label><input type="checkbox"> Sharara Set <span>(61)</span></label>
+                            <label><input type="checkbox"> Anarkali Set <span>(4)</span></label>
+                            <label><input type="checkbox"> Kalidar Set <span>(10)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-collection" class="toggle">
+                        <label for="toggle-collection" class="accordion-toggle">Collection</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Karawan <span>(29)</span></label>
+                            <label><input type="checkbox"> Karawan Festive <span>(27)</span></label>
+                            <label><input type="checkbox"> Kaleidoscope <span>(17)</span></label>
+                            <label><input type="checkbox"> RAHI By Rimple And Harpreet <span>(100)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-color" class="toggle">
+                        <label for="toggle-color" class="accordion-toggle">Color</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Red <span>(8)</span></label>
+                            <label><input type="checkbox"> Blue <span>(15)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-ready" class="toggle">
+                        <label for="toggle-ready" class="accordion-toggle">Ready to Ship</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Yes <span>(22)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-fabric" class="toggle">
+                        <label for="toggle-fabric" class="accordion-toggle">Fabric</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Silk <span>(18)</span></label>
+                            <label><input type="checkbox"> Organza <span>(7)</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-area">
+                <input value name="q" placeholder="Search products" aria-label="Search products" autocomplete="off"
+                    class="gf-controls-search-input">
+                <section class="featured-products">
+                    <div class="product-item">
+                        <img src="img/groom_ethnic1.png" alt="Pale Gold Choga Set">
+                        <h3>Pale Gold Choga Set</h3>
+                        <p class="price">Rs. 465,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                    <div class="product-item">
+                        <img src="img/groom_ethnic2.png" alt="Inory Sherwani Set">
+                        <h3>Inory Sherwani Set</h3>
+                        <p class="price">Rs. 335,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                    <div class="product-item">
+                        <img src="img/groom_ethnic3.png" alt="Burnished Gold Sherwani Set">
+                        <h3>Burnished Gold Sherwani Set</h3>
+                        <p class="price">Rs. 380,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                    <div class="product-item">
+                        <img src="img/groom_ethnic4.png" alt="Cream-Gold Sherwani set">
+                        <h3>Cream-Gold Sherwani set</h3>
+                        <p class="price">Rs. 400,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

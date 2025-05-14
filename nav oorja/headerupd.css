@@ -1,0 +1,142 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Playfair Display', serif;
+    background-color: #fefcf9;
+    color: #333;
+  }
+  
+  /* Navbar Container */
+  header {
+    background-color: #fff;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Left Nav */
+  .nav-left ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  
+  .nav-left a {
+    font-family: 'Cinzel', serif;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-left a:hover {
+    color: #bfa46f;
+  }
+  
+  /* Logo */
+  .nav-logo img {
+    height: 60px;
+    width: auto;
+  }
+  
+  /* Right Nav */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 0.9rem;
+    width: 180px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-bar input:focus {
+    border-color: #bfa46f;
+  }
+  
+  .search-bar i {
+    position: absolute;
+    right: 10px;
+    color: #888;
+    cursor: pointer;
+  }
+  
+  /* Icons */
+  .icons {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .icons i {
+    position: relative;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .icons i:hover {
+    color: #bfa46f;
+  }
+  
+  /* Cart count badge */
+  .icons i[data-count]::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #bfa46f;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 5px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .nav-left ul {
+      gap: 1rem;
+    }
+  
+    .nav-right {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .search-bar input {
+      width: 100%;
+    }
+  }
+  

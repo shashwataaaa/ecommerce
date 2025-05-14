@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Light Luxuries Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --royal-maroon: #5e2c2c;
+            --deep-maroon: #491d1d;
+            --light-maroon: #7a4343;
+            --gold: #7d6a2c;
+            --beige: #d4b689;
+            --cream: #f8f1e5;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-image:url('aesthetic.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 0;
+            color: var(--beige);
+            font-size: 16px;
+        }
+
+       
+
+            header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgb(18, 5, 5);
+    position: fixed; /* This is the magic line! */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make it span the entire width */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    border-bottom: 8px solid black;
+    min-height: 80px;
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+        
+
+        .logo {
+            position: relative; /* Changed to relative */
+            top: 0;          /* Reset top */
+            left: 0;         /* Reset left */
+            transform: none; /* Remove transform */
+            z-index: 10;
+            text-align: center;
+            margin-right: 20px; /* Added right margin to create space */
+        }
+
+        .logo img {
+            height: 65px;
+            width: auto;
+        }
+
+        .left-nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            padding-right: 0; /* Removed right padding */
+            margin-left: 100px; /* Added left margin */
+        }
+
+        .right-nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            padding-left: 0; /* Removed left padding */
+            margin-right: 10px;
+        }
+
+       nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li {
+            position: relative;
+            text-align: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--beige);
+            padding: 12px 10px;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+            background: rgba(245, 230, 208, 0.1);
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Dropdown menus */
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgb(28, 8, 8);
+            padding: 10px 0;
+            border-radius: 0 0 4px 4px;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 200px;
+            border-top: 2px solid var(--gold);
+            z-index: 100;
+        }
+
+        nav ul li ul li ul {
+            left: 100%;
+            top: -10px;
+            transform: none;
+            border-left: 2px solid var(--gold);
+        }
+
+        nav ul li:hover > ul {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        nav ul li ul li {
+            width: 100%;
+            padding: 5px 0;
+            text-align: left;
+        }
+
+        nav ul li ul li a {
+            padding: 8px 20px;
+            font-size: 20px;
+            display: block;
+            border-left: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        nav ul li ul li a:hover {
+            border-left: 2px solid var(--gold);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .right-section {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Reduced gap */
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--beige);
+            border-radius: 10px;
+            padding: 6px 10px; /* Reduced padding */
+            border: 1px solid var(--gold);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            background: none;
+            padding: 6px; /* Reduced padding */
+            font-size: 16px; /* Reduced font size */
+            color: rgb(28, 8, 8);
+            width: 150px; /* Reduced width */
+            font-family: 'Playfair Display', serif;
+        }
+
+        .search-bar i {
+            color: rgb(28, 8, 8);
+            cursor: pointer;
+            font-size: 18px; /* Reduced font size */
+        }
+
+        .icons {
+            display: flex;
+            gap: 10px; /* Reduced gap */
+            font-size: 24px; /* Reduced font size */
+            color: var(--beige);
+            margin-right: 30px;
+        }
+
+        .icons i {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .icons i:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .icons i::after {
+            content: attr(data-count);
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: var(--deep-maroon);
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .wrapper-viewall {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            width: 100%;
+            position: relative;
+            margin-top: 80px; /* Add margin-top to account for fixed header height */
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 2rem; /* Added padding around the content area */
+            background-image: url('aestheticdarkflip.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            gap: 2rem; /* Adjusted gap */
+            width: 95%;
+            max-width: 1600px;
+            margin: 2rem auto;
+            border-radius: 25px;
+            box-sizing: border-box;
+            justify-content: flex-start; /* Align items to the start to push filter left */
+        }
+
+       .filter-sidebar {
+    background: rgba(30, 20, 10, 0.88); /* Rich dark background */
+    color: #ead9c2;
+    width: 22rem;
+    max-width: 22rem;
+    padding: 25px;
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    margin-right: 1rem;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.1); /* Soft golden glow */
+}
+
+.filter-box {
+    width: 100%;
+}
+
+.filter-box h3 {
+    font-size: 1.2rem;
+    color: #D4AF37;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.accordion-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.2rem;
+}
+
+.accordion-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: #f1c27d;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin: 1rem 0;
+    transition: color 0.3s ease;
+}
+
+.accordion-toggle:hover {
+    color: #fff;
+}
+
+.accordion-toggle::before {
+    content: '▾';
+    display: inline-block;
+    margin-right: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+input.toggle {
+    display: none;
+}
+
+input.toggle:checked + label::before {
+    transform: rotate(-180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    padding-left: 1rem;
+}
+
+input.toggle:checked ~ .accordion-content {
+    max-height: 40rem;
+}
+
+.accordion-content label {
+    font-size: 0.95rem;
+    color: #ead9c2;
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.accordion-content label:hover {
+    color: #ffffff;
+}
+
+.accordion-content input {
+    margin-right: 0.6rem;
+    accent-color: #D4AF37;
+}
+
+.accordion-content span {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-left: 0.4rem;
+}
+
+
+        .search-area {
+            flex-grow: 1; /* Allows the search area to take remaining width */
+            display: flex;
+            justify-content: flex-start; /* Align products to the left */
+        }
+
+        .featured-products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem; /* Increased gap between product items */
+            width: 100%; /* Ensure products take full width of search area */
+        }
+
+        .product-item {
+            width: calc(33% - 1rem); /* Adjust width for 3 columns with gap */
+            border-radius: 2rem;
+            margin-bottom: 0; /* Removed bottom margin, using gap instead */
+            border-bottom: none;
+            padding-bottom: 0;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0.5rem; /* Slightly increased border-radius */
+            box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.1); /* Increased shadow */
+            object-fit: contain;
+            max-height: 32rem; /* Increased max height */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-item h3 {
+           
+            font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    margin-top: 1.2rem;
+    color: #EAD9C2; /* Soft champagne gold */
+    letter-spacing: 0.5px;
+        }
+
+        .price {
+           
+            font-family: 'Lora', serif;
+    font-weight: 600;
+    font-style: italic;
+    color: #D4AF37; /* Royal Gold */
+    margin-top: 0.6rem;
+    font-size: 1.4rem;
+        }
+
+        .cart3 {
+           
+            margin-top: 1.2rem;
+    background: #8B5C2C; /* Warm bronze */
+    color: #FDF5E6; /* Soft cream white */
+    padding: 0.9rem 1.4rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.05rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cart3:hover {
+    background: #7A4E22;
+    box-shadow: 0 0 10px rgba(255, 215, 160, 0.3);
+}
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            header {
+                padding: 10px 15px;
+            }
+            .logo img{
+                height: 50px;
+            }
+            nav ul li a{
+                font-size: 14px;
+                padding: 8px;
+            }
+            .search-bar input{
+                font-size: 14px;
+                width: 120px;
+            }
+            .icons{
+                font-size: 20px;
+            }
+            .left-nav, .right-nav{
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .content-area {
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+            .filter-sidebar {
+                width: 18rem;
+                max-width: 18rem;
+                margin-right: 0.8rem;
+                padding: 20px;
+            }
+            .featured-products {
+                gap: 1rem;
+            }
+            .product-item {
+                width: calc(50% - 0.5rem);
+            }
+        }
+
+        @media (max-width: 992px){
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+                min-height: auto; /* Adjust min-height for stacked layout */
+            }
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .left-nav, .right-nav {
+                flex-direction: column;
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%; /* Take full width on smaller screens */
+            }
+            .right-nav {
+                padding-left: 0;
+                align-items: flex-start; /* Align items to the start */
+                margin-top: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .right-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                width: 100%;
+            }
+            .search-bar {
+                width: 100%;
+            }
+            .content-area {
+                flex-direction: column;
+            }
+            .filter-sidebar {
+                width: 100%;
+                max-width: none;
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            .search-area {
+                width: 100%;
+            }
+            .product-item {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .content-area {
+                padding: 4rem; /* Increased padding */
+                gap: 3rem;
+            }
+
+            .filter-sidebar {
+                width: 22rem;
+                max-width: 22rem;
+                margin-right: 2rem;
+                padding: 35px;
+            }
+
+            .featured-products {
+                gap: 2.5rem;
+            }
+
+            .product-item {
+                width: calc(33% - 1.66rem); /* Adjust for 3 columns with wider gap */
+            }
+        }
+
+        .content-area {
+            max-width: 140rem; /* Further increase max-width */
+            width: 98%;
+            margin: 3rem auto; /* Increased margin */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png.png" alt="Royal Wedding Logo" style="height: 80px; width: auto;">
+        </div>
+        <div class="left-nav" style="flex: 0.8">
+            <nav>
+                <ul>
+                 <li><a href="#">Bridal</a>
+                        <ul>
+                            <li><a href="#">Clothing</a>
+                                <ul>
+                                    <li><a href="#">Lehenga Choli</a></li>
+                                    <li><a href="#">Sarees</a></li>
+                                    <li><a href="#">Sharara/Gharara</a></li>
+                                    <li><a href="#">Anarkali Suits</a></li>
+                                    <li><a href="#">Indo-Western Gowns</a></li>
+                                    <li><a href="#">Reception Wear</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Footwear</a>
+                                <ul>
+                                    <li><a href="#">Mojaris</a></li>
+                                    <li><a href="#">Embroidered Juttis</a></li>
+                                    <li><a href="#">Heeled Sandals</a></li>
+                                    <li><a href="#">Bridal Kolhapuris</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Groom</a>
+                        <ul>
+                            <li><a href="#">Clothing</a>
+                                <ul>
+                                    <li><a href="#">Sherwani</a></li>
+                                    <li><a href="#">Bandhgala</a></li>
+                                    <li><a href="#">Kurta Pyjama Sets</a></li>
+                                    <li><a href="#">Achkan</a></li>
+                                    <li><a href="#">Nehru Jackets</a></li>
+                                    <li><a href="#">Indo-Western Suits</a></li>
+                                    <li><a href="#">Reception Suits</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Footwear</a>
+                                <ul>
+                                    <li><a href="#">Mojaris</a></li>
+                                    <li><a href="#">Juttis</a></li>
+                                    <li><a href="#">Kolhapuris</a></li>
+                                    <li><a href="#">Sandals</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Jewellery</a>
+                        <ul>
+                            <li><a href="#">Maang Tikka</a></li>
+                            <li><a href="#">Necklace Sets</a></li>
+                            <li><a href="#">Nath</a></li>
+                            <li><a href="#">Bangles & Kadas</a></li>
+                            <li><a href="#">Anklets/Payal</a></li>
+                            <li><a href="#">Earrings</a></li>
+                            <li><a href="#">Waist Belt</a></li>
+                            <li><a href="#">Matha Patti</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right-nav">
+            <nav>
+                <ul>
+                    <li><a href="#">BOOK APPOINTMENT</a></li>
+                    <li><a href="#">WEDDING CLOSET</a></li>
+                    <li><a href="#">STORES</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right-section">
+            <div class="search-bar">
+                <input type="text" placeholder="Search Kurtas, Sherwani...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="icons">
+                <i class="fas fa-user" title="Account"></i>
+                <i class="fas fa-heart" title="Wishlist" data-count="0"></i>
+                <i class="fas fa-shopping-cart" title="Cart" data-count="0"></i>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper-viewall">
+
+        <div class="content-area">
+            <h1 style="text-align: center;
+    margin: 3rem auto;
+    font-size: 3.2rem;
+    color: #D4AF37; /* Royal Gold */
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    width: 100%;">Light Luxuries</h1>
+
+            <div class="filter-sidebar">
+                <div class="filter-box">
+                    <h3>Filter By</h3>
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-category" class="toggle">
+                        <label for="toggle-category" class="accordion-toggle">Category</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Ear accessory <span>(18)</span></label>
+                            <label><input type="checkbox"> Earrings <span>(18)</span></label>
+                            <label><input type="checkbox"> Hand accessory <span>(61)</span></label>
+                            <label><input type="checkbox"> Head accessory <span>(1)</span></label>
+                            <label><input type="checkbox"> Necklace <span>(61)</span></label>
+                            <label><input type="checkbox"> Nose accessory <span>(4)</span></label>
+                          
+                        </div>
+                    </div>
+
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-collection" class="toggle">
+                        <label for="toggle-collection" class="accordion-toggle">Collection</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Bangle <span>(29)</span></label>
+                            <label><input type="checkbox"> Ear chain<span>(27)</span></label>
+                            <label><input type="checkbox"> Hath phool <span>(17)</span></label>
+                            <label><input type="checkbox"> Necklace <span>(100)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-color" class="toggle">
+                        <label for="toggle-color" class="accordion-toggle">Color</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Gold <span>(8)</span></label>
+                            <label><input type="checkbox"> Silver <span>(15)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-ready" class="toggle">
+                        <label for="toggle-ready" class="accordion-toggle">Occasion</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Diwali <span>(20)</span></label>
+                             <label><input type="checkbox"> Haldi <span>(10)</span></label>
+                              <label><input type="checkbox"> Mehendi<span>(25)</span></label>
+                               <label><input type="checkbox"> Wedding <span>(42)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section">
+                        <input type="checkbox" id="toggle-fabric" class="toggle">
+                        <label for="toggle-fabric" class="accordion-toggle">Material</label>
+                        <div class="accordion-content">
+                            <label><input type="checkbox"> Diamond <span>(18)</span></label>
+                            <label><input type="checkbox"> Gold <span>(8)</span></label>
+                            <label><input type="checkbox"> Pearl <span>(7)</span></label>
+                            <label><input type="checkbox"> Platinum <span>(17)</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-area">
+
+                <section class="featured-products">
+                    <div class="product-item">
+                        <img src="img/jewel1.webp" alt="Pale Gold Choga Set">
+                        <h3>Gold Finish Kundan Hathphool </h3>
+                        <p class="price">Rs. 465,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                    <div class="product-item">
+                        <img src="img/jewel2.webp" alt="Inory Sherwani Set">
+                        <h3>Ruby & Emerald Chand Jhumke</h3>
+                        <p class="price">Rs. 335,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                    <div class="product-item">
+                        <img src="img/jewel3.webp" alt="Burnished Gold Sherwani Set">
+                        <h3>Ruby Chand Baliya</h3>
+                        <p class="price">Rs. 380,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                    <div class="product-item">
+                        <img src="img/jewel4.webp" alt="Cream-Gold Sherwani set">
+                        <h3>Red Stone Chand Jhumke</h3>
+                        <p class="price">Rs. 400,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                     <div class="product-item">
+                        <img src="img/jewel5.webp" alt="Cream-Gold Sherwani set">
+                        <h3>Navratan Jhumke </h3>
+                        <p class="price">Rs. 450,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                     <div class="product-item">
+                        <img src="img/jewel6.webp" alt="Cream-Gold Sherwani set">
+                        <h3>Navratan Bangles </h3>
+                        <p class="price">Rs. 490,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                     <div class="product-item">
+                        <img src="img/jewel7.webp" alt="Cream-Gold Sherwani set">
+                        <h3>Peacock Navratan Jadau Kangan </h3>
+                        <p class="price">Rs. 390,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                     <div class="product-item">
+                        <img src="img/jewel8.webp" alt="Cream-Gold Sherwani set">
+                        <h3>Bridal Rani Statement Bangle </h3>
+                        <p class="price">Rs. 480,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                     <div class="product-item">
+                        <img src="img/jewel9.webp" alt="Cream-Gold Sherwani set">
+                        <h3>3 Layer Festive Pearl Earchain</h3>
+                        <p class="price">Rs. 410,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                     <div class="product-item">
+                        <img src="img/jewel10.webp" alt="Cream-Gold Sherwani set">
+                        <h3>Rani Pink Necklace with Pearl</h3>
+                        <p class="price">Rs. 370,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                     <div class="product-item">
+                        <img src="img/jewel11.webp" alt="Cream-Gold Sherwani set">
+                        <h3> Navratan Necklace</h3>
+                        <p class="price">Rs. 500,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                     <div class="product-item">
+                        <img src="img/jewel12.webp" alt="Cream-Gold Sherwani set">
+                        <h3>Yellow Sapphre Necklace</h3>
+                        <p class="price">Rs. 550,000</p>
+                        <h3 class="cart3">ADD TO CART</h3>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

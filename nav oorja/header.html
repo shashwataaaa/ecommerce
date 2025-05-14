@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thread & Tails - Royal Wedding Attire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --royal-maroon: #5e2c2c;
+            --deep-maroon: #3b2927;
+            --light-maroon: #7a4343;
+            --gold: #d4af37;
+            --beige: #f5e6d0;
+            --cream: #f8f1e5;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: var(--deep-maroon);
+            color: var(--beige);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: linear-gradient(to right, var(--deep-maroon), var(--royal-maroon));
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .logo {
+            position: absolute;
+            top: 50%;
+            left: 40%; /* Adjusted from 50% to 40% to move left */
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+        }
+
+        .logo img {
+            height: 120px;
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            border: 3px solid var(--gold);
+            background: var(--beige);
+            padding: 5px;
+        }
+
+        .logo::before, .logo::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 100px; /* Reduced from 150px */
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .logo::before {
+            right: 100%;
+            margin-right: 15px;
+        }
+
+        .logo::after {
+            left: 100%;
+            margin-left: 15px;
+        }
+
+        /* Left Navigation */
+        .left-nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            padding-right: 180px; /* Space for logo */
+        }
+
+        /* Right Navigation */
+        .right-nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            padding-left: 180px; /* Space for logo */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li {
+            position: relative;
+            text-align: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--beige);
+            padding: 12px 10px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+            background: rgba(245, 230, 208, 0.1);
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Dropdown menus */
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--royal-maroon);
+            padding: 10px 0;
+            border-radius: 0 0 8px 8px;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 200px;
+            border-top: 2px solid var(--gold);
+            z-index: 100;
+        }
+
+        nav ul li ul li ul {
+            left: 100%;
+            top: -10px;
+            transform: none;
+            border-left: 2px solid var(--gold);
+        }
+
+        nav ul li:hover > ul {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        nav ul li ul li {
+            width: 100%;
+            padding: 5px 0;
+            text-align: left;
+        }
+
+        nav ul li ul li a {
+            padding: 8px 20px;
+            font-size: 13px;
+            display: block;
+            border-left: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        nav ul li ul li a:hover {
+            border-left: 2px solid var(--gold);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .right-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--beige);
+            border-radius: 30px;
+            padding: 8px 15px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            background: none;
+            padding: 8px;
+            font-size: 14px;
+            color: var(--deep-maroon);
+            width: 180px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .search-bar i {
+            color: var(--deep-maroon);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+            font-size: 18px;
+            color: var(--beige);
+        }
+
+        .icons i {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .icons i:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .icons i::after {
+            content: attr(data-count);
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: var(--deep-maroon);
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1400px) {
+            .logo {
+                left: 38%;
+            }
+            
+            .left-nav {
+                padding-right: 160px;
+            }
+            
+            .right-nav {
+                padding-left: 160px;
+            }
+            
+            nav ul li a {
+                padding: 10px 8px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            header {
+                padding: 15px 30px;
+            }
+            
+            .logo {
+                left: 35%;
+            }
+            
+            .left-nav {
+                padding-right: 140px;
+            }
+            
+            .right-nav {
+                padding-left: 140px;
+            }
+            
+            nav ul li a {
+                font-size: 12px;
+                padding: 10px 6px;
+            }
+            
+            .search-bar {
+                padding: 6px 12px;
+            }
+            
+            .search-bar input {
+                width: 140px;
+                font-size: 12px;
+            }
+            
+            .icons {
+                gap: 12px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="left-nav">
+            <nav>
+                <ul>
+                    <li><a href="#">Bridal</a>
+                        <ul>
+                            <li><a href="#">Clothing</a>
+                                <ul>
+                                    <li><a href="#">Lehenga Choli</a></li>
+                                    <li><a href="#">Sarees</a></li>
+                                    <li><a href="#">Sharara/Gharara</a></li>
+                                    <li><a href="#">Anarkali Suits</a></li>
+                                    <li><a href="#">Indo-Western Gowns</a></li>
+                                    <li><a href="#">Reception Wear</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Footwear</a>
+                                <ul>
+                                    <li><a href="#">Mojaris</a></li>
+                                    <li><a href="#">Embroidered Juttis</a></li>
+                                    <li><a href="#">Heeled Sandals</a></li>
+                                    <li><a href="#">Bridal Kolhapuris</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Groom</a>
+                        <ul>
+                            <li><a href="#">Clothing</a>
+                                <ul>
+                                    <li><a href="#">Sherwani</a></li>
+                                    <li><a href="#">Bandhgala</a></li>
+                                    <li><a href="#">Kurta Pyjama Sets</a></li>
+                                    <li><a href="#">Achkan</a></li>
+                                    <li><a href="#">Nehru Jackets</a></li>
+                                    <li><a href="#">Indo-Western Suits</a></li>
+                                    <li><a href="#">Reception Suits</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Footwear</a>
+                                <ul>
+                                    <li><a href="#">Mojaris</a></li>
+                                    <li><a href="#">Juttis</a></li>
+                                    <li><a href="#">Kolhapuris</a></li>
+                                    <li><a href="#">Sandals</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Jewellery</a>
+                        <ul>
+                            <li><a href="#">Maang Tikka</a></li>
+                            <li><a href="#">Necklace Sets</a></li>
+                            <li><a href="#">Nath</a></li>
+                            <li><a href="#">Bangles & Kadas</a></li>
+                            <li><a href="#">Anklets/Payal</a></li>
+                            <li><a href="#">Earrings</a></li>
+                            <li><a href="#">Waist Belt</a></li>
+                            <li><a href="#">Matha Patti</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="logo">
+            <img src="logo.jpg" alt="Royal Wedding Logo">
+        </div>
+
+        <div class="right-nav">
+            <nav>
+                <ul>
+                    <li><a href="#">Book Appointment</a></li>
+                    <li><a href="#">Wedding Closet</a></li>
+                    <li><a href="#">Stores</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="right-section">
+            <div class="search-bar">
+                <input type="text" placeholder="Search Kurtas, Sherwani...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="icons">
+                <i class="fas fa-user" title="Account"></i>
+                <i class="fas fa-heart" title="Wishlist" data-count="0"></i>
+                <i class="fas fa-shopping-cart" title="Cart" data-count="0"></i>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>

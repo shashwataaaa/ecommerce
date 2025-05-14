@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rimple & Harpreet Footer Replica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 60px 40px 20px;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            width: 16%;
+            margin-bottom: 30px;
+            min-width: 160px;
+        }
+
+        .footer-column h3 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #a9a9a9;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #fff;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background-color: #3b3b3b;
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+            line-height: 32px;
+            margin-right: 10px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #fff;
+            color: #1e1e1e;
+        }
+
+        .signup-form {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .signup-form input {
+            width: 100%;
+            padding: 10px;
+            background-color: #3b3b3b;
+            border: none;
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .signup-form input::placeholder {
+            color: #a9a9a9;
+        }
+
+        .signup-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #a08347;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .signup-form button:hover {
+            background-color: #c19f52;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #3b3b3b;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-logo {
+            font-family: serif;
+            font-style: italic;
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            color: #a9a9a9;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .language-selector {
+            margin-bottom: 15px;
+        }
+
+        .language-selector select {
+            padding: 5px 10px;
+            background-color: #3b3b3b;
+            color: #fff;
+            border: none;
+            font-size: 12px;
+        }
+
+        @media (max-width: 992px) {
+            .footer-column {
+                width: 33%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-column {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-column {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>OUR SERVICES</h3>
+                <ul>
+                    <li><a href="#">Bespoke Clothing</a></li>
+                    <li><a href="#">Wedding Attire</a></li>
+                    <li><a href="#">Ready To Wear</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Book Appointment</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>CUSTOMER SUPPORT</h3>
+                <ul>
+                    <li><a href="#">Help & FAQs</a></li>
+                    <li><a href="#">Shipping Information</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>POLICY & TERMS</h3>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">i</a>
+                    <a href="#" title="Pinterest">p</a>
+                    <a href="#" title="Twitter">t</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>SIGN UP</h3>
+                <p style="color: #a9a9a9; font-size: 14px; margin-bottom: 10px;">Receive exclusive email only promotions and offers</p>
+                <form class="signup-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-logo">R A H</div>
+            <div class="copyright">© 2025 Rimple & Harpreet. All rights reserved.</div>
+            <div class="language-selector">
+                <select>
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                </select>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
